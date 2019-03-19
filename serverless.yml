@@ -2,11 +2,18 @@ service: express-application
 
 provider: 
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs8.10
   region: ap-south-1
 
 plugins:
   - serverless-offline
+  - serverless-mocha-plugin
+custom:
+  serverless-mocha-plugin:
+    preTestCommands: 
+      - bash startOffline.sh
+    postTestCommands:
+      - bash stopOffline.sh
 
 functions: 
   app: 
@@ -20,4 +27,4 @@ functions:
       #     method: get
       - http:
           path: /api/{proxy+}
-          method: ANY
+          method: get
