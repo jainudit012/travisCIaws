@@ -13,3 +13,10 @@ script:
 
 after_success:
   - sls deploy
+
+notifications: 
+ slack:
+  rooms: 
+    - opscaleindia:PBF4tVV10a56K6rZpKMVs95E
+  on_success: always # default always
+  on_failure: always # default always
