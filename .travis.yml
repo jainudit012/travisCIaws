@@ -10,8 +10,10 @@ before_script:
 
 script: 
   - echo "SUCCESS"
+  - sls invoke test
 
 after_success:
+  - echo SUCCESS
   - sls deploy
 
 notifications: 
