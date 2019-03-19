@@ -1,0 +1,23 @@
+service: express-application
+
+provider: 
+  name: aws
+  runtime: nodejs8.10
+  region: ap-south-1
+
+plugins:
+  - serverless-offline
+
+functions: 
+  app: 
+    handler: server.handler
+    events: 
+      - http: 
+          path: /api
+          method: get
+      # - http: 
+      #     path: /api/index
+      #     method: get
+      - http:
+          path: /api/{proxy+}
+          method: ANY

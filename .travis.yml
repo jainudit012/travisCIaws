@@ -1,0 +1,13 @@
+language: node_js
+# sudo: true
+branches: 
+  only: 
+    - master
+before_script: 
+  - npm i 
+
+script: 
+  - echo "SUCCESS"
+
+after_success:
+  - sls deploy
