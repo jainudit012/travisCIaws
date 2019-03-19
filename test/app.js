@@ -15,10 +15,10 @@ describe('app', () => {
     done();
   });
   const server = request('http://localhost:3000/api')
-  it('chai first test', (done)=>{
+  it('chai first failing test', (done)=>{
     try{
       server.get('/').end((err,res)=>{
-        res.should.have.status(200)
+        res.should.have.status(400)
         res.should.have.property('body')
         res.body.should.have.property('msg')
         res.body.should.have.property('error')
