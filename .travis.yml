@@ -18,7 +18,7 @@ install:
 before_script:
   - bash startOffline.sh
   - go run main.go test failing
-  
+
 script:
   - bash stopOffline.sh
   - echo "SUCCESS"
@@ -34,3 +34,9 @@ notifications:
       - opscaleindia:PBF4tVV10a56K6rZpKMVs95E
     on_success: always # default always
     on_failure: always # default always
+     template:
+      - "Build  <%{build_url}|#%{build_number}> for Repo: %{repository_slug} "
+      - "Commit: (%{commit}) : %{message} %{foo} "
+      - "Build details: %{build_url}"
+      - "By: %{author} "
+      - "Result: %{result} in %{duration}"
