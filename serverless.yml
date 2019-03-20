@@ -8,12 +8,12 @@ provider:
 plugins:
   - serverless-offline
   - serverless-mocha-plugin
-custom:
-  serverless-mocha-plugin:
-    preTestCommands: 
-      - bash startOffline.sh
-    postTestCommands:
-      - bash stopOffline.sh
+# custom:
+#   serverless-mocha-plugin:
+    # preTestCommands: 
+    #   - bash startOffline.sh
+    # postTestCommands:
+    #   - bash stopOffline.sh
 
 functions: 
   app: 

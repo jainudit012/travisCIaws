@@ -1,7 +1,13 @@
+sudo: true
+dist: xenial
+
 language: node_js
 node_js: 
   - node
-# sudo: true
+go: 
+  - 1.11.x
+
+
 branches: 
   only: 
     - master
@@ -9,19 +15,22 @@ branches:
 install: 
   - npm i 
 
-before_script: 
-  - sls invoke test
-
+before_script:
+  - bash startOffline.sh
+  - go run main.go test failing
+  
 script:
-  - echo "Test Passed"
+  - bash stopOffline.sh
+  - echo "SUCCESS"
 
 after_success:
-  - echo "SUCCESS"
+  - echo "Deploying"
   - sls deploy
 
 notifications: 
- slack:
-  rooms: 
-    - opscaleindia:PBF4tVV10a56K6rZpKMVs95E
-  on_success: always # default always
-  on_failure: always # default always
+  email: true
+  slack:
+    rooms: 
+      - opscaleindia:PBF4tVV10a56K6rZpKMVs95E
+    on_success: always # default always
+    on_failure: always # default always

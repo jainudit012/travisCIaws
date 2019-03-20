@@ -15,7 +15,7 @@ describe('app', () => {
     done();
   });
   const server = request('http://localhost:3000/api')
-  it('chai first failing test', (done)=>{
+  it('this test should fail', (done)=>{
     try{
       server.get('/').end((err,res)=>{
         res.should.have.status(400)
